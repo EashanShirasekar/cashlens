@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TopBar extends StatelessWidget {
   final String title;
 
-  const TopBar({Key? key, this.title = 'CashLens'}) : super(key: key);
+  const TopBar({super.key, this.title = 'CashLens'});
 
   @override
   Widget build(BuildContext context) {

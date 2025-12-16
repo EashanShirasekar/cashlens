@@ -4,6 +4,8 @@ import '../widgets/glass_card.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class InsightsScreen extends StatefulWidget {
+  const InsightsScreen({super.key});
+
   @override
   State<InsightsScreen> createState() => _InsightsScreenState();
 }

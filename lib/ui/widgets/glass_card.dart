@@ -7,12 +7,12 @@ class GlassCard extends StatelessWidget {
   final String glow; // 'none', 'teal', 'blue', etc.
 
   const GlassCard({
-    Key? key,
+    super.key,
     required this.child,
     this.borderRadius = 20,
     this.opacity = 0.08,
     this.glow = 'none',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

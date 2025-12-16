@@ -4,6 +4,8 @@ import '../widgets/glass_card.dart';
 
 
 class TransactionsScreen extends StatefulWidget {
+  const TransactionsScreen({super.key});
+
   @override
   State<TransactionsScreen> createState() => _TransactionsScreenState();
 }

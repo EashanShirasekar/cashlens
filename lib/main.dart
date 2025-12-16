@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'core/theme.dart';
 import 'ui/screens/dashboard_screen.dart';
 import 'ui/screens/transactions_screen.dart';
@@ -6,6 +7,7 @@ import 'ui/screens/insights_screen.dart';
 import 'ui/screens/goals_screen.dart';
 import 'ui/screens/settings_screen.dart';
 import 'ui/screens/onboarding_screen.dart';
+import 'services/sms_service.dart';
 
 
 void main() {
@@ -13,12 +15,23 @@ void main() {
 }
 
 class CashLensApp extends StatefulWidget {
+  const CashLensApp({super.key});
+
   @override
   State<CashLensApp> createState() => _CashLensAppState();
 }
 
 class _CashLensAppState extends State<CashLensApp> {
   bool _showOnboarding = true; // later you can load this from storage
+  final SmsService _smsService = SmsService();
+
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isAndroid) {
+      _smsService.start();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +55,8 @@ class _CashLensAppState extends State<CashLensApp> {
 
 // NEW: Root tab switcher that handles bottom navigation and screen changes
 class HomeSwitcher extends StatefulWidget {
+  const HomeSwitcher({super.key});
+
   @override
   State<HomeSwitcher> createState() => _HomeSwitcherState();
 }
@@ -84,8 +99,8 @@ class _HomeSwitcherState extends State<HomeSwitcher> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Color(0xFF00F5D4),
-        child: Icon(Icons.add, color: Colors.black),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        child: Icon(Icons.add, color: Colors.black),
       ),
     );
   }

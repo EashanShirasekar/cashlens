@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class OnboardingScreen extends StatefulWidget {
   final VoidCallback onFinished;
 
-  const OnboardingScreen({Key? key, required this.onFinished}) : super(key: key);
+  const OnboardingScreen({super.key, required this.onFinished});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();

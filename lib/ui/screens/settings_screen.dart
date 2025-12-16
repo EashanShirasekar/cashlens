@@ -3,6 +3,8 @@ import '../widgets/top_bar.dart';
 import '../widgets/glass_card.dart';
 
 class SettingsScreen extends StatefulWidget {
+  const SettingsScreen({super.key});
+
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
@@ -262,7 +264,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Color(0xFF00F5D4),
+            activeThumbColor: Color(0xFF00F5D4),
             inactiveThumbColor: Colors.white,
             inactiveTrackColor: Colors.white.withOpacity(0.2),
           ),

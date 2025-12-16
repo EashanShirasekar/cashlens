@@ -4,6 +4,8 @@ import '../widgets/glass_card.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
+
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
 }
@@ -227,7 +229,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         });
                                       },
                                       child: Text(
-                                        "$days" + "d",
+                                        days "d",
                                         style: TextStyle(
                                           color: timeRange == days ? Color(0xFF00F5D4) : Colors.grey,
                                           fontWeight: timeRange == days ? FontWeight.bold : FontWeight.normal,
@@ -304,39 +306,39 @@ class _DashboardScreenState extends State<DashboardScreen> {
               SizedBox(height: 14),
 
               // AI Recommendation & Upcoming Bills in vertical layout
-              if (mockTopRecommendation != null) ...[
-                GlassCard(
-                  child: Padding(
-                    padding: const EdgeInsets.all(14),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF00F5D4).withOpacity(0.10),
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                          child: Icon(Icons.flash_on, color: Color(0xFF00F5D4), size: 22),
+              ...[
+              GlassCard(
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF00F5D4).withOpacity(0.10),
+                          borderRadius: BorderRadius.circular(18),
                         ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Smart Insight", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                              SizedBox(height: 3),
-                              Text(mockTopRecommendation['message'], style: TextStyle(color: Colors.grey, fontSize: 12)),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                        child: Icon(Icons.flash_on, color: Color(0xFF00F5D4), size: 22),
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Smart Insight", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                            SizedBox(height: 3),
+                            Text(mockTopRecommendation['message'], style: TextStyle(color: Colors.grey, fontSize: 12)),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                SizedBox(height: 12),
-              ],
+              ),
+              SizedBox(height: 12),
+            ],
               if (mockUpcomingBills.isNotEmpty) ...[
                 GlassCard(
                   child: Padding(
@@ -466,8 +468,7 @@ class _QuickActionButton extends StatelessWidget {
   final Color color;
   final String label;
 
-  const _QuickActionButton({Key? key, required this.icon, required this.color, required this.label})
-      : super(key: key);
+  const _QuickActionButton({super.key, required this.icon, required this.color, required this.label});
 
   @override
   Widget build(BuildContext context) {

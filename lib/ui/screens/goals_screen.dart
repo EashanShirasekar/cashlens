@@ -63,6 +63,8 @@ class GoalsScreen extends StatelessWidget {
     ),
   ];
 
+  const GoalsScreen({super.key});
+
   int calculateMonthsLeft(Goal goal) {
     if (!goal.autoSaveEnabled || goal.autoSaveAmount == 0) return 0;
     final monthsLeft = ((goal.targetAmount - goal.savedAmount) / goal.autoSaveAmount).ceil();
