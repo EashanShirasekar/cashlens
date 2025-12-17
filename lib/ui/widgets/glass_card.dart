@@ -19,7 +19,7 @@ class GlassCard extends StatelessWidget {
     BoxShadow? shadow;
     if (glow == 'teal') {
       shadow = BoxShadow(
-        color: Color(0xFF00F5D4).withOpacity(0.18),
+        color: Color(0xFF00F5D4).withValues(alpha: 0.18),
         blurRadius: 38,
         spreadRadius: 0,
         offset: Offset(0, 0),
@@ -27,9 +27,9 @@ class GlassCard extends StatelessWidget {
     }
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(opacity),
+        color: Colors.white.withValues(alpha: opacity),
         borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(color: Colors.white.withOpacity(0.10)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.10)),
         boxShadow: shadow != null ? [shadow] : null,
       ),
       child: child,

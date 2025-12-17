@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/glass_card.dart';
+import '../../state/transactions_provider.dart';
 
 
-class TransactionsScreen extends StatefulWidget {
+class TransactionsScreen extends ConsumerStatefulWidget {
   const TransactionsScreen({super.key});
 
   @override
-  State<TransactionsScreen> createState() => _TransactionsScreenState();
+  ConsumerState<TransactionsScreen> createState() => _TransactionsScreenState();
 }
 
-class _TransactionsScreenState extends State<TransactionsScreen> {
+class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
   int selectedIndex = 1; // Change this to match which nav item is transactions
 
   String searchQuery = '';
@@ -18,88 +20,23 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
 
   final categories = ['All', 'Income', 'Food & Drink', 'Transport', 'Shopping', 'Housing'];
 
-  final List<Map<String, dynamic>> allTransactions = [
-    {
-      'id': 1,
-      'merchant': 'Starbucks Coffee',
-      'category': 'Food & Drink',
-      'amount': -5.50,
-      'date': 'Oct 10, 2025',
-      'time': '09:30 AM',
-      'icon': Icons.local_cafe,
-      'color': Color(0xFFF59E0B),
-    },
-    {
-      'id': 2,
-      'merchant': 'Uber Ride',
-      'category': 'Transport',
-      'amount': -12.30,
-      'date': 'Oct 10, 2025',
-      'time': '08:15 AM',
-      'icon': Icons.directions_car,
-      'color': Color(0xFF00A3FF),
-    },
-    {
-      'id': 3,
-      'merchant': 'Amazon Purchase',
-      'category': 'Shopping',
-      'amount': -45.99,
-      'date': 'Oct 9, 2025',
-      'time': '06:45 PM',
-      'icon': Icons.shopping_bag,
-      'color': Color(0xFF8B5CF6),
-    },
-    {
-      'id': 4,
-      'merchant': 'Monthly Salary',
-      'category': 'Income',
-      'amount': 3500.00,
-      'date': 'Oct 1, 2025',
-      'time': '12:00 AM',
-      'icon': Icons.trending_up,
-      'color': Color(0xFF00FFC6),
-    },
-    {
-      'id': 5,
-      'merchant': 'Rent Payment',
-      'category': 'Housing',
-      'amount': -1200.00,
-      'date': 'Oct 1, 2025',
-      'time': '10:00 AM',
-      'icon': Icons.home,
-      'color': Color(0xFFFF6B6B),
-    },
-    {
-      'id': 6,
-      'merchant': 'Dinner at Olive Garden',
-      'category': 'Food & Drink',
-      'amount': -68.50,
-      'date': 'Oct 8, 2025',
-      'time': '07:30 PM',
-      'icon': Icons.restaurant,
-      'color': Color(0xFFF59E0B),
-    },
-    {
-      'id': 7,
-      'merchant': 'Gas Station',
-      'category': 'Transport',
-      'amount': -45.00,
-      'date': 'Oct 7, 2025',
-      'time': '05:00 PM',
-      'icon': Icons.local_gas_station,
-      'color': Color(0xFF00A3FF),
-    },
-    {
-      'id': 8,
-      'merchant': 'Grocery Store',
-      'category': 'Shopping',
-      'amount': -89.23,
-      'date': 'Oct 6, 2025',
-      'time': '11:30 AM',
-      'icon': Icons.shopping_bag,
-      'color': Color(0xFF8B5CF6),
-    },
-  ];
+  List<Map<String, dynamic>> get allTransactions {
+    final list = ref.watch(transactionsProvider);
+    return list.map((t) {
+      final color = _colorForCategory(t.category);
+      final icon = _iconForCategory(t.category);
+      return {
+        'id': t.id,
+        'merchant': t.merchant,
+        'category': t.category,
+        'amount': t.amount,
+        'date': t.date,
+        'time': '',
+        'icon': icon,
+        'color': color,
+      };
+    }).toList();
+  }
 
   List<Map<String, dynamic>> get filteredTransactions {
     return allTransactions.where((transaction) {
@@ -138,7 +75,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                             hintText: 'Search transactions...',
                             hintStyle: TextStyle(color: Colors.grey),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.05),
+                            fillColor: Colors.white.withValues(alpha: 0.05),
                             prefixIcon: Icon(Icons.search, color: Colors.grey),
                             border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0), borderSide: BorderSide.none),
                           ),
@@ -155,9 +92,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     child: Container(
                       padding: EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.05),
+                        color: Colors.white.withValues(alpha: 0.05),
                         borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: Colors.white.withOpacity(0.10)),
+                        border: Border.all(color: Colors.white.withValues(alpha: 0.10)),
                       ),
                       child: Icon(Icons.filter_alt, color: Color(0xFF00F5D4)),
                     ),
@@ -185,8 +122,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                         selected: isActive,
                         pressElevation: 0,
                         elevation: 0,
-                        selectedColor: Color(0xFF00F5D4).withOpacity(0.19),
-                        backgroundColor: Colors.white.withOpacity(0.05),
+                        selectedColor: Color(0xFF00F5D4).withValues(alpha: 0.19),
+                        backgroundColor: Colors.white.withValues(alpha: 0.05),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14), side: BorderSide(color: Colors.transparent)),
                         onSelected: (_) => setState(() => selectedCategory = category),
                       ),
@@ -209,7 +146,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                               width: 48,
                               height: 48,
                               decoration: BoxDecoration(
-                                color: transaction['color'].withOpacity(0.19),
+                                color: transaction['color'].withValues(alpha: 0.19),
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: Icon(transaction['icon'], color: transaction['color'], size: 26),
@@ -226,7 +163,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                       Container(
                                         padding: EdgeInsets.symmetric(horizontal: 7, vertical: 2),
                                         decoration: BoxDecoration(
-                                          color: transaction['color'].withOpacity(0.19),
+                                          color: transaction['color'].withValues(alpha: 0.19),
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                         child: Text(
@@ -265,6 +202,42 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
       // Floating Action Button
       
     );
+  }
+
+  IconData _iconForCategory(String category) {
+    switch (category) {
+      case 'Food & Drink':
+        return Icons.local_cafe;
+      case 'Transport':
+        return Icons.directions_car;
+      case 'Shopping':
+        return Icons.shopping_bag;
+      case 'Housing':
+        return Icons.home;
+      case 'Salary':
+      case 'Income':
+        return Icons.trending_up;
+      default:
+        return Icons.payment;
+    }
+  }
+
+  Color _colorForCategory(String category) {
+    switch (category) {
+      case 'Food & Drink':
+        return Color(0xFFF59E0B);
+      case 'Transport':
+        return Color(0xFF00A3FF);
+      case 'Shopping':
+        return Color(0xFF8B5CF6);
+      case 'Housing':
+        return Color(0xFFFF6B6B);
+      case 'Salary':
+      case 'Income':
+        return Color(0xFF00FFC6);
+      default:
+        return Color(0xFF00F5D4);
+    }
   }
 }
 

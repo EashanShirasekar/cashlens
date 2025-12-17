@@ -128,7 +128,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   padding: EdgeInsets.all(10),
                   child: Text(
                     "Developer Note: Aggregated data from multiple Firestore collections: accounts (balance sum), transactions (income/expense filtering), recommendations (AI tips), goals (progress tracking).",
-                    style: TextStyle(fontSize: 11, color: Colors.tealAccent.shade100.withOpacity(0.7)),
+                    style: TextStyle(fontSize: 11, color: Colors.tealAccent.shade100.withValues(alpha: 0.7)),
                   ),
                 ),
               ),
@@ -146,7 +146,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                             decoration: BoxDecoration(
-                              color: Color(0xFF00F5D4).withOpacity(0.10),
+                              color: Color(0xFF00F5D4).withValues(alpha: 0.10),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Row(
@@ -229,7 +229,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         });
                                       },
                                       child: Text(
-                                        days "d",
+                                        '${days}d',
                                         style: TextStyle(
                                           color: timeRange == days ? Color(0xFF00F5D4) : Colors.grey,
                                           fontWeight: timeRange == days ? FontWeight.bold : FontWeight.normal,
@@ -317,7 +317,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          color: Color(0xFF00F5D4).withOpacity(0.10),
+                          color: Color(0xFF00F5D4).withValues(alpha: 0.10),
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Icon(Icons.flash_on, color: Color(0xFF00F5D4), size: 22),
@@ -350,7 +350,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Color(0xFFFF6B6B).withOpacity(0.10),
+                            color: Color(0xFFFF6B6B).withValues(alpha: 0.10),
                             borderRadius: BorderRadius.circular(18),
                           ),
                           child: Icon(Icons.error_outline, color: Color(0xFFFF6B6B), size: 22),
@@ -403,7 +403,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   width: 38,
                                   height: 38,
                                   decoration: BoxDecoration(
-                                    color: txColor.withOpacity(0.19),
+                                    color: txColor.withValues(alpha: 0.19),
                                     borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: Icon(_getIcon(tx['category']), color: txColor, size: 22),
@@ -419,7 +419,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                           Container(
                                             padding: EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                                             decoration: BoxDecoration(
-                                              color: txColor.withOpacity(0.19),
+                                              color: txColor.withValues(alpha: 0.19),
                                               borderRadius: BorderRadius.circular(8),
                                             ),
                                             child: Text(tx['category'],
@@ -468,7 +468,7 @@ class _QuickActionButton extends StatelessWidget {
   final Color color;
   final String label;
 
-  const _QuickActionButton({super.key, required this.icon, required this.color, required this.label});
+  const _QuickActionButton({required this.icon, required this.color, required this.label});
 
   @override
   Widget build(BuildContext context) {

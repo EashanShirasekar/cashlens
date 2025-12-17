@@ -39,12 +39,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 width: double.infinity,
                 height: 460, // tall enough, no inner scroll needed
                 decoration: BoxDecoration(
-                  color: const Color(0xFF111318).withOpacity(0.98),
+                  color: const Color(0xFF111318).withValues(alpha: 0.98),
                   borderRadius: BorderRadius.circular(24),
-                  border: Border.all(color: Colors.white.withOpacity(0.06)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.06)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.7),
+                      color: Colors.black.withValues(alpha: 0.7),
                       blurRadius: 36,
                       offset: const Offset(0, 18),
                     ),
@@ -128,7 +128,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             decoration: BoxDecoration(
               color: step == 1
                   ? const Color(0xFF00E59C)
-                  : Colors.white.withOpacity(0.12),
+                  : Colors.white.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(999),
             ),
           ),
@@ -239,7 +239,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           decoration: BoxDecoration(
             color: const Color(0xFF181B23),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withOpacity(0.08)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,7 +264,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           width: double.infinity,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: const Color(0xFF00E59C).withOpacity(0.12),
+            color: const Color(0xFF00E59C).withValues(alpha: 0.12),
             borderRadius: BorderRadius.circular(12),
           ),
           child: const Text(
@@ -288,9 +288,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }) {
     const teal = Color(0xFF00E59C);
     final borderColor =
-        isHighlighted ? teal.withOpacity(0.8) : Colors.white.withOpacity(0.10);
+        isHighlighted ? teal.withValues(alpha: 0.8) : Colors.white.withValues(alpha: 0.10);
     final iconColor =
-        isHighlighted ? teal : Colors.white.withOpacity(0.45);
+        isHighlighted ? teal : Colors.white.withValues(alpha: 0.45);
 
     return Container(
       width: double.infinity,
@@ -365,7 +365,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 backgroundColor: const Color(0xFF181B23),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18),
-                  side: BorderSide(color: Colors.white.withOpacity(0.20)),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.20)),
                 ),
               ),
               child: const Text(
@@ -422,7 +422,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 backgroundColor: const Color(0xFF181B23),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18),
-                  side: BorderSide(color: Colors.white.withOpacity(0.20)),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.20)),
                 ),
               ),
               child: const Text(

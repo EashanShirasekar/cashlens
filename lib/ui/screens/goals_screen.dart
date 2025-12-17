@@ -63,7 +63,7 @@ class GoalsScreen extends StatelessWidget {
     ),
   ];
 
-  const GoalsScreen({super.key});
+  GoalsScreen({super.key});
 
   int calculateMonthsLeft(Goal goal) {
     if (!goal.autoSaveEnabled || goal.autoSaveAmount == 0) return 0;
@@ -101,7 +101,7 @@ class GoalsScreen extends StatelessWidget {
                     "Developer Note: Data from Firestore → goals collection.\n"
                     "Query: db.collection('goals').where('userId','==', uid).\n"
                     "Progress = savedAmount/targetAmount. Auto-save enabled via linked accounts.",
-                    style: TextStyle(color: Colors.tealAccent.shade100.withOpacity(0.7), fontSize: 12),
+                    style: TextStyle(color: Colors.tealAccent.shade100.withValues(alpha: 0.7), fontSize: 12),
                   ),
                 ),
               ),
@@ -131,7 +131,7 @@ class GoalsScreen extends StatelessWidget {
                                       width: 40,
                                       height: 40,
                                       decoration: BoxDecoration(
-                                        color: goal.color.withOpacity(0.1),
+                                        color: goal.color.withValues(alpha: 0.1),
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Icon(
@@ -164,7 +164,7 @@ class GoalsScreen extends StatelessWidget {
                                   Container(
                                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                     decoration: BoxDecoration(
-                                      color: goal.color.withOpacity(0.15),
+                                      color: goal.color.withValues(alpha: 0.15),
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Text(
@@ -192,7 +192,7 @@ class GoalsScreen extends StatelessWidget {
                                       value: progress,
                                       strokeWidth: 10,
                                       color: goal.color,
-                                      backgroundColor: Colors.white.withOpacity(0.1),
+                                      backgroundColor: Colors.white.withValues(alpha: 0.1),
                                     ),
                                   ),
                                   Column(
@@ -234,7 +234,7 @@ class GoalsScreen extends StatelessWidget {
                                 minHeight: 10,
                                 value: progress,
                                 color: goal.color,
-                                backgroundColor: Colors.white.withOpacity(0.1),
+                                backgroundColor: Colors.white.withValues(alpha: 0.1),
                               ),
                             ),
                           ],
@@ -320,7 +320,7 @@ class GoalsScreen extends StatelessWidget {
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
-                  side: BorderSide(color: Colors.white.withOpacity(0.2), width: 1, style: BorderStyle.solid),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.2), width: 1, style: BorderStyle.solid),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
                   padding: EdgeInsets.symmetric(vertical: 16),
                   elevation: 0,

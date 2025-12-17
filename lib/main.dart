@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/theme.dart';
 import 'ui/screens/dashboard_screen.dart';
 import 'ui/screens/transactions_screen.dart';
@@ -8,20 +9,20 @@ import 'ui/screens/goals_screen.dart';
 import 'ui/screens/settings_screen.dart';
 import 'ui/screens/onboarding_screen.dart';
 import 'services/sms_service.dart';
+import 'state/transactions_provider.dart';
 
 
 void main() {
-  runApp(CashLensApp());
+  runApp(ProviderScope(child: CashLensApp()));
 }
 
-class CashLensApp extends StatefulWidget {
+class CashLensApp extends ConsumerStatefulWidget {
   const CashLensApp({super.key});
-
   @override
-  State<CashLensApp> createState() => _CashLensAppState();
+  ConsumerState<CashLensApp> createState() => _CashLensAppState();
 }
 
-class _CashLensAppState extends State<CashLensApp> {
+class _CashLensAppState extends ConsumerState<CashLensApp> {
   bool _showOnboarding = true; // later you can load this from storage
   final SmsService _smsService = SmsService();
 
@@ -29,7 +30,9 @@ class _CashLensAppState extends State<CashLensApp> {
   void initState() {
     super.initState();
     if (Platform.isAndroid) {
-      _smsService.start();
+      _smsService.start(onParsed: (parsed) {
+        ref.read(transactionsProvider.notifier).addParsed(parsed);
+      });
     }
   }
 

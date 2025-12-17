@@ -60,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       TextButton(
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                          backgroundColor: Color(0xFF00F5D4).withOpacity(0.12),
+                          backgroundColor: Color(0xFF00F5D4).withValues(alpha: 0.12),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                         ),
                         onPressed: () {},
@@ -159,9 +159,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       padding: EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: Color(0xFFFF6B6B).withOpacity(0.2), width: 1),
+                            color: Color(0xFFFF6B6B).withValues(alpha: 0.2), width: 1),
                         borderRadius: BorderRadius.circular(18),
-                        color: Colors.white.withOpacity(0.02),
+                        color: Colors.white.withValues(alpha: 0.02),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -203,7 +203,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget _divider() {
     return Container(
       height: 1,
-      color: Colors.white.withOpacity(0.05),
+      color: Colors.white.withValues(alpha: 0.05),
       margin: EdgeInsets.symmetric(horizontal: 8),
     );
   }
@@ -224,7 +224,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               width: 36,
               height: 36,
               decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(10)),
               child: Icon(icon, color: Color(0xFF00F5D4), size: 20),
             ),
@@ -249,14 +249,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
       padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 6),
       child: Row(
         children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.05),
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(10)),
-            child: Icon(icon, color: Color(0xFF00F5D4), size: 20),
-          ),
+              child: Icon(icon, color: Color(0xFF00F5D4), size: 20),
+            ),
           SizedBox(width: 16),
           Expanded(
               child: Text(label,
@@ -266,7 +266,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: onChanged,
             activeThumbColor: Color(0xFF00F5D4),
             inactiveThumbColor: Colors.white,
-            inactiveTrackColor: Colors.white.withOpacity(0.2),
+            inactiveTrackColor: Colors.white.withValues(alpha: 0.2),
           ),
         ],
       ),
@@ -277,7 +277,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.11),
+        color: color.withValues(alpha: 0.11),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(value, style: TextStyle(color: color, fontSize: 13, fontWeight: FontWeight.w600)),

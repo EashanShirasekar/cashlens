@@ -37,7 +37,7 @@ class TopBar extends StatelessWidget {
             width: 38,
             height: 38,
             decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.04),
+                color: Colors.white.withValues(alpha: 0.04),
                 shape: BoxShape.circle
             ),
             child: Icon(Icons.person, color: Color(0xFF00F5D4), size: 22),

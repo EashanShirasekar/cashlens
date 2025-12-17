@@ -57,7 +57,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
                               width: 32,
                               height: 32,
                               decoration: BoxDecoration(
-                                color: Color(0xFF00F5D4).withOpacity(0.1),
+                                color: Color(0xFF00F5D4).withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Icon(Icons.trending_up, color: Color(0xFF00F5D4), size: 20),
@@ -84,7 +84,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
                               width: 32,
                               height: 32,
                               decoration: BoxDecoration(
-                                color: Color(0xFF0EA5FF).withOpacity(0.1),
+                                color: Color(0xFF0EA5FF).withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Icon(Icons.trending_down, color: Color(0xFF0EA5FF), size: 20),
@@ -239,7 +239,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
                               drawVerticalLine: true,
                               horizontalInterval: 900,
                               getDrawingHorizontalLine: (value) => FlLine(
-                                color: Colors.white.withOpacity(0.05),
+                                color: Colors.white.withValues(alpha: 0.05),
                                 strokeWidth: 1,
                               ),
                             ),
@@ -336,7 +336,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          color: Color(0xFF0EA5FF).withOpacity(0.1),
+                          color: Color(0xFF0EA5FF).withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Icon(Icons.lightbulb, color: Color(0xFF0EA5FF), size: 24),

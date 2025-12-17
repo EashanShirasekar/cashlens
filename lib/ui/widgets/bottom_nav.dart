@@ -19,7 +19,7 @@ class BottomNav extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: selectedIndex,
       onTap: onSelect,
-      backgroundColor: Color(0xFF00F5D4).withOpacity(0.10),
+      backgroundColor: Color(0xFF00F5D4).withValues(alpha: 0.10),
       selectedItemColor: Color(0xFF00F5D4),
       unselectedItemColor: Colors.grey,
       showSelectedLabels: true,
